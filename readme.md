@@ -4,6 +4,8 @@ A set of mods focused on team dynamics and sense of progression.
 ## Setup
 First of all install and run DayZ from Steam, them install DayZ Tools from Steam too.
 
+After the installation open the DayZ Tools and on settings configure the Project Drive path, then mount the P:\ drive.
+
 Next you will need to set an Environment Variable on your system pointing to the DayZ Tools installation folder named "DAYZ_TOOLS" and another named "DAYZ_FOLDER" pointing to the game installation folder, it will be needed to some scripts work.
 
 Run the setup.bat that is inside the scripts folder, it will create the symbolic links and run the first build.
