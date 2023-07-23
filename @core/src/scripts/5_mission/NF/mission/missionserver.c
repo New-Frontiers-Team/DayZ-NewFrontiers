@@ -2,19 +2,19 @@ modded class MissionServer extends MissionBase
 {
 	void MissionServer()
 	{
-		GetNewFrontiersManager();
+		GetNFManager();
 	}
 
 	override void InvokeOnConnect(PlayerBase player, PlayerIdentity identity)
 	{
-		GetNewFrontiersManager().OnPlayerConnect(player);
+		GetNFManager().OnPlayerConnect(player);
 		
 		super.InvokeOnConnect(player, identity);
 	}
 	
 	override void InvokeOnDisconnect( PlayerBase player )
 	{
-		GetNewFrontiersManager().OnPlayerDisconnect(player);
+		GetNFManager().OnPlayerDisconnect(player);
 		
 		super.InvokeOnDisconnect(player);
 	}

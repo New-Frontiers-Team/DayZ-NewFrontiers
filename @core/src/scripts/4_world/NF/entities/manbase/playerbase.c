@@ -1,12 +1,12 @@
 modded class PlayerBase
 {
-	protected ref NewFrontiersPlayer m_NewFrontiersPlayer;
-	protected int m_NewFrontiersTeam;
+	protected ref NF_Player m_NF_Player;
+	protected int m_NF_Team;
 	
 	override void Init()
 	{
-		m_NewFrontiersTeam = 0;
-		RegisterNetSyncVariableInt("m_NewFrontiersTeam", 0, 2);
+		m_NF_Team = 0;
+		RegisterNetSyncVariableInt("m_NF_Team", 0, 2);
 		
 		super.Init();
 	}
@@ -17,20 +17,20 @@ modded class PlayerBase
 
 		if ( GetGame().IsServer() && GetIdentity() )
 		{
-			m_NewFrontiersPlayer = GetNewFrontiersManager().GetPlayer(GetIdentity().GetPlainId());
-			SetNewFrontiersTeam(m_NewFrontiersPlayer.GetTeam());
+			m_NF_Player = GetNFManager().GetPlayer(GetIdentity().GetPlainId());
+			SetNFTeam(m_NF_Player.GetTeam());
 		}
 	}
 	
-	int GetNewFrontiersTeam()
+	int GetNFTeam()
 	{
-		return m_NewFrontiersTeam;
+		return m_NF_Team;
 	}
 	
-	void SetNewFrontiersTeam( int newFrontiers_team )
+	void SetNFTeam( int nf_team )
 	{
-		m_NewFrontiersTeam = newFrontiers_team;
-		Print("[NewFrontiers] Team changed to " + NewFrontiersTeam.GetTeamName(m_NewFrontiersTeam));
+		m_NF_Team = nf_team;
+		Print("[NewFrontiers] Team changed to " + NF_Team.GetTeamName(m_NF_Team));
 
 		int slot_id = InventorySlots.GetSlotIdFromString("Armband");
 		EntityAI armband = GetInventory().FindAttachment(slot_id);
@@ -39,10 +39,10 @@ modded class PlayerBase
 			GetInventory().LocalDestroyEntity(armband);
 		}
 
-		if (m_NewFrontiersTeam) {
-			if (m_NewFrontiersTeam == NewFrontiersTeams.Blufor) {
+		if (m_NF_Team) {
+			if (m_NF_Team == NF_Teams.Blufor) {
 				GetInventory().CreateAttachmentEx("Armband_Blue", slot_id);
-			} else if (m_NewFrontiersTeam == NewFrontiersTeams.Opfor) {
+			} else if (m_NF_Team == NF_Teams.Opfor) {
 				GetInventory().CreateAttachmentEx("Armband_Red", slot_id);
 			}
 

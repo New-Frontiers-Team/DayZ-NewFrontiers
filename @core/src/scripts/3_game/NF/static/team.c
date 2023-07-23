@@ -1,11 +1,11 @@
-enum NewFrontiersTeams
+enum NF_Teams
 {
     Independent,
     Blufor,
     Opfor,
 }
 
-class NewFrontiersTeam
+class NF_Team
 {
     static const int NUM_OF_TEAMS = 3;
 
@@ -18,9 +18,9 @@ class NewFrontiersTeam
     {
         switch (team)
         {
-            case NewFrontiersTeams.Blufor:
+            case NF_Teams.Blufor:
                 return "Blufor";
-            case NewFrontiersTeams.Opfor:
+            case NF_Teams.Opfor:
                 return "Opfor";
         }
 		

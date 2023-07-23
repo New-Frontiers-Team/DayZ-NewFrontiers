@@ -1,9 +1,9 @@
-class NewFrontiersPlayerData
+class NF_PlayerData
 {
     int team;
 }
 
-class NewFrontiersPlayer : RestCallback
+class NF_Player : RestCallback
 {
 	static const string DIR_NEW_FRONTIERS = "$profile:NewFrontiers/";
 	static const string DIR_PLAYERS = DIR_NEW_FRONTIERS + "Players/";
@@ -11,7 +11,7 @@ class NewFrontiersPlayer : RestCallback
     private string m_Id;
     private int m_Team;
 
-    void NewFrontiersPlayer(string pId)
+    void NF_Player(string pId)
     {
         m_Id = pId;
         m_Team = 0;
@@ -30,7 +30,7 @@ class NewFrontiersPlayer : RestCallback
         if(FileExist(DIR_PLAYERS + m_Id + ".json")) {
             LoadData();
         } else {
-            m_Team = NewFrontiersTeam.GenerateTeam();
+            m_Team = NF_Team.GenerateTeam();
 
             SaveData();
         }
@@ -38,18 +38,18 @@ class NewFrontiersPlayer : RestCallback
 	
 	void LoadData()
 	{
-        NewFrontiersPlayerData data = new NewFrontiersPlayerData();
-		JsonFileLoader<NewFrontiersPlayerData>.JsonLoadFile(DIR_PLAYERS + m_Id + ".json", data);
+        NF_PlayerData data = new NF_PlayerData();
+		JsonFileLoader<NF_PlayerData>.JsonLoadFile(DIR_PLAYERS + m_Id + ".json", data);
 
         m_Team = data.team;
 	}
 
 	void SaveData()
 	{
-        NewFrontiersPlayerData data = new NewFrontiersPlayerData();
+        NF_PlayerData data = new NF_PlayerData();
         data.team = m_Team;
 
-		JsonFileLoader<NewFrontiersPlayerData>.JsonSaveFile(DIR_PLAYERS + m_Id + ".json", data);
+		JsonFileLoader<NF_PlayerData>.JsonSaveFile(DIR_PLAYERS + m_Id + ".json", data);
 	}
 	
 	string GetPlayerId()
