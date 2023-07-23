@@ -1,0 +1,10 @@
+name = "New Frontiers";
+picture = "";
+logoSmall = "";
+logo = "";
+logoOver = "";
+tooltip = "";
+overview = "First Test";
+action = "https://dayz.com/";
+author = "Struntuz";
+version = "0.1";
