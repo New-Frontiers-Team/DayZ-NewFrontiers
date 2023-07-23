@@ -14,13 +14,29 @@ class CfgMods
 
 		class defs
 		{
+			class gameScriptModule
+			{
+				value = "";
+				files[] = {
+					"NewFrontiers/scripts/3_game",
+				};
+			}
+
 			class worldScriptModule
 			{
 				value = "";
 				files[] = {
-					"NewFrontiers/Scripts/4_World",
+					"NewFrontiers/scripts/4_world",
 				};
 			};
+
+			class missionScriptModule
+			{
+				value = "";
+				files[] = {
+					"NewFrontiers/scripts/5_mission",
+				};
+			}
 		};
 	};
 };
