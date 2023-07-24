@@ -35,21 +35,18 @@ class NF_Bases_SafezoneManager
 			if (safezone.GetTeam() != m_Player.GetNFTeam()) {
 				m_ShowAlert = true;
 				m_RestrictedAreaTick += m_Tick;
+				m_Player.SetAllowDamage(true);
 			} else {
 				m_ShowAlert = false;
 				m_RestrictedAreaTick = 0;
 			}
-			
-			Print("[NewFrontiers] Player is in a safezone");
 		} else {
 			m_ShowAlert = false;
 			m_RestrictedAreaTick = 0;
 		}
 		
 		if (m_RestrictedAreaTick >= RESTRICTED_AREA_SEC) {
-			m_Player.SetAllowDamage(true);
 			m_Player.SetHealth( "GlobalHealth", "Health", 0 );
-			Print("[NewFrontiers] Player is now dead");
 		}
 		
 		bool isInSafezone = !!safezone;
