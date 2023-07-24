@@ -16,7 +16,7 @@ Run the setup.bat that is inside the scripts folder, it will create the symbolic
 Download the latest DayZ Server from Steam and copy mpmissions folder and serverDZ.cfg file to your DayZ gane folder.
 
 Change those options on your new serverDZ.cfg:
-```
+```C
 BattlEye = 0;			// turn off BE since diag exe does not run with it
 verifySignatures = 0;	// if testing mods which aren't properly signed yet
 allowFilePatching = 1;  // allow clients with unpacked data to join
@@ -26,3 +26,35 @@ Run the server.bat script to start the server on test mode and client.bat to sta
 
 ## Debugging and File Patching
 To develop and debug run the workbench.bat script, it will open the Enfusion Workbench with the mods loaded and file patching enabled, so you can edit the mod and recompile it using ctrl + F7 during runtime.
+
+## Server configuration
+
+The Bases mod provide two types of configurations, team defined respawn points and team exclusive safezones, those two are stored inside the server profile folder on the path "NewFrontiers/Bases" as json files. Examples:
+
+#### Respawns:
+```JSON
+[
+    {
+        "team": 1,
+        "position": "4645 0 10094"
+    }, {
+        "team": 2,
+        "position": "4357 0 10606"
+    }
+]
+```
+
+#### Safezones:
+```JSON
+[
+    {
+        "team": 1,
+        "position": "4645 0 10094",
+        "radius": 200
+    }, {
+        "team": 2,
+        "position": "4357 0 10606",
+        "radius": 200
+    }
+]
+```

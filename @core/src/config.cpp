@@ -3,8 +3,7 @@ class CfgPatches
 	class NewFrontiers
 	{
 		requiredAddons[] = {
-			"DZ_Data",
-			"JM_CF_Scripts"
+			"JM_CF_Scripts",
 		};
 	};
 };
