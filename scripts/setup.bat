@@ -11,6 +11,7 @@ mklink /J "%DAYZ_FOLDER%\NewFrontiersBases" "..\@bases\src"
 :: Prepare build folder
 mklink /J "P:\@NewFrontiers" "..\@core\build"
 mklink /J "P:\@NewFrontiersBases" "..\@bases\build"
+mklink /J "P:\@CF" "%DAYZ_FOLDER%\!Workshop\@CF"
 
 :: Build
 call "build.bat"
