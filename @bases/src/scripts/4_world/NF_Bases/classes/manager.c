@@ -41,7 +41,7 @@ class NF_Bases_Manager
 		{
 			ref NF_Bases_Safezone safezone = safezones.Get(i);
 			
-			float distance = vector.Distance(safezone.GetPosition(), player.GetPosition());
+			float distance = NF_Vector.Distance2D(safezone.GetPosition(), player.GetPosition());
 			if (distance <= safezone.GetRadius())
 			{
 				return safezone;
