@@ -7,15 +7,19 @@ modded class MissionServer extends MissionBase
 
 	override void InvokeOnConnect(PlayerBase player, PlayerIdentity identity)
 	{
-		GetNFManager().OnPlayerConnect(player);
+		if(identity) {
+			GetNFManager().OnPlayerConnect(identity.GetId());
+		}
 		
 		super.InvokeOnConnect(player, identity);
 	}
-	
-	override void InvokeOnDisconnect( PlayerBase player )
+
+	override void PlayerDisconnected(PlayerBase player, PlayerIdentity identity, string uid)
 	{
-		GetNFManager().OnPlayerDisconnect(player);
-		
-		super.InvokeOnDisconnect(player);
+		if(uid) {
+			GetNFManager().OnPlayerDisconnect(uid);
+		}
+
+		super.PlayerDisconnected(player, identity, uid);
 	}
 }

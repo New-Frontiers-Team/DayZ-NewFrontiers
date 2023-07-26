@@ -11,10 +11,14 @@ class NF_Player : RestCallback
     private string m_Id;
     private int m_Team;
 
-    void NF_Player(string pId)
+    private string m_FilePath;
+
+    void NF_Player(string uid)
     {
-        m_Id = pId;
+        m_Id = uid;
         m_Team = 0;
+
+        m_FilePath = DIR_PLAYERS + NF_String.FileReadyName(uid) + ".json";
 
         Init();
     }
@@ -27,7 +31,7 @@ class NF_Player : RestCallback
         if(!FileExist(DIR_PLAYERS))
 			MakeDirectory(DIR_PLAYERS);
 
-        if(FileExist(DIR_PLAYERS + m_Id + ".json")) {
+        if(FileExist(m_FilePath)) {
             LoadData();
         } else {
             m_Team = NF_Team.GenerateTeam();
@@ -39,7 +43,7 @@ class NF_Player : RestCallback
 	void LoadData()
 	{
         NF_PlayerData data = new NF_PlayerData();
-		JsonFileLoader<NF_PlayerData>.JsonLoadFile(DIR_PLAYERS + m_Id + ".json", data);
+		JsonFileLoader<NF_PlayerData>.JsonLoadFile(m_FilePath, data);
 
         m_Team = data.team;
 	}
@@ -49,10 +53,10 @@ class NF_Player : RestCallback
         NF_PlayerData data = new NF_PlayerData();
         data.team = m_Team;
 
-		JsonFileLoader<NF_PlayerData>.JsonSaveFile(DIR_PLAYERS + m_Id + ".json", data);
+		JsonFileLoader<NF_PlayerData>.JsonSaveFile(m_FilePath, data);
 	}
 	
-	string GetPlayerId()
+	string GetId()
 	{
 		return m_Id;
 	}

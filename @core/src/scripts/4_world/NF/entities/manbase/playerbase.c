@@ -22,7 +22,7 @@ modded class PlayerBase
 
 		if ( GetGame().IsServer() && GetIdentity() )
 		{
-			m_NF_Player = GetNFManager().GetPlayer(GetIdentity().GetPlainId());
+			m_NF_Player = GetNFManager().GetPlayer(GetIdentity().GetId());
 			SetNFTeam(m_NF_Player.GetTeam());
 		}
 	}
