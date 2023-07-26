@@ -35,7 +35,7 @@ class NF_Bases_SafezoneManager
 	{
 		ref NF_Bases_Safezone safezone = GetNFBasesManager().CheckPlayerInSafezone(m_Player);
 		if (safezone) {
-			if (safezone.GetTeam() != m_Player.GetNFTeam() || m_Player.NF_IsInCombatMode()) {
+			if (safezone.GetTeam() != m_Player.NF_GetFaction() || m_Player.NF_IsInCombatMode()) {
 				m_ShowAlert = true;
 				m_RestrictedAreaTick += m_Tick;
 				m_Player.SetAllowDamage(true);

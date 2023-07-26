@@ -1,7 +1,7 @@
 modded class PlayerBase
 {
 	protected ref NF_Player m_NF_Player;
-	protected int m_NF_Team;
+	protected int m_NF_FactionId;
 
 	protected bool m_NF_IsInCombatMode;
 	protected float m_NF_CombatModeTick;
@@ -10,8 +10,8 @@ modded class PlayerBase
 
 	override void Init()
 	{
-		m_NF_Team = 0;
-		RegisterNetSyncVariableInt("m_NF_Team", 0, 2);
+		m_NF_FactionId = 0;
+		RegisterNetSyncVariableInt("m_NF_FactionId");
 		
 		super.Init();
 	}
@@ -20,38 +20,33 @@ modded class PlayerBase
 	{
 		super.OnPlayerLoaded();
 
-		if ( GetGame().IsServer() && GetIdentity() )
-		{
+		if(GetGame().IsServer() && GetIdentity()) {
 			m_NF_Player = GetNFManager().GetPlayer(GetIdentity().GetId());
-			SetNFTeam(m_NF_Player.GetTeam());
+			NF_SetFaction(m_NF_Player.GetFaction());
 		}
 	}
 	
-	int GetNFTeam()
+	int NF_GetFaction()
 	{
-		return m_NF_Team;
+		return m_NF_FactionId;
 	}
 	
-	void SetNFTeam( int nf_team )
+	void NF_SetFaction(NF_Faction faction)
 	{
-		m_NF_Team = nf_team;
-		Print("[NewFrontiers] Team changed to " + NF_Team.GetTeamName(m_NF_Team));
+		m_NF_FactionId = faction.GetId();
 
-		int slot_id = InventorySlots.GetSlotIdFromString("Armband");
-		EntityAI armband = GetInventory().FindAttachment(slot_id);
+		if(m_NF_FactionId) {
+			int slot_id = InventorySlots.GetSlotIdFromString("Armband");
+			EntityAI armband = GetInventory().FindAttachment(slot_id);
 
-		if (armband && (armband.GetType() == "Armband_Blue" || armband.GetType() == "Armband_Red")) {
-			GetInventory().LocalDestroyEntity(armband);
-		}
-
-		if (m_NF_Team) {
-			if (m_NF_Team == NF_Teams.Blufor) {
-				GetInventory().CreateAttachmentEx("Armband_Blue", slot_id);
-			} else if (m_NF_Team == NF_Teams.Opfor) {
-				GetInventory().CreateAttachmentEx("Armband_Red", slot_id);
+			if (armband) {
+				GetInventory().LocalDestroyEntity(armband);
 			}
 
-			GetInventory().SetSlotLock(slot_id, true);
+			if (faction.GetArmband()) {
+				GetInventory().CreateAttachmentEx(faction.GetArmband(), slot_id);
+				GetInventory().SetSlotLock(slot_id, true);
+			}
 		} else {
 			GetInventory().SetSlotLock(slot_id, false);
 		}

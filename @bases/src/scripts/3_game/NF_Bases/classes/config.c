@@ -1,7 +1,6 @@
 class NF_Bases_Config
 {
-    static const string DIR_NEW_FRONTIERS = "$profile:NewFrontiers/";
-	static const string DIR_BASES = DIR_NEW_FRONTIERS + "Bases/";
+	static const string DIR_BASES = NF_DIR + "Bases/";
 
     private ref array<ref NF_Bases_Safezone> m_Safezones = new ref array< ref NF_Bases_Safezone >;
 	private ref array<ref NF_Bases_Respawn> m_Respawns = new ref array< ref NF_Bases_Respawn >;
@@ -13,9 +12,6 @@ class NF_Bases_Config
 
     void Init()
     {
-        if (!FileExist(DIR_NEW_FRONTIERS))
-			MakeDirectory(DIR_NEW_FRONTIERS);
-		
         if (!FileExist(DIR_BASES))
 			MakeDirectory(DIR_BASES);
 

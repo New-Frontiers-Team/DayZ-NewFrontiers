@@ -8,9 +8,9 @@ modded class MissionServer extends MissionBase
 	override PlayerBase OnClientNewEvent(PlayerIdentity identity, vector pos, ParamsReadContext ctx)
 	{
 		ref NF_Player nf_Player = GetNFManager().GetPlayer(identity.GetId());
-		int team = nf_Player.GetTeam();
+		int faction = nf_Player.GetFaction().GetId();
 		
-		ref NF_Bases_Respawn respawn = GetNFBasesManager().GetRespawn(team);
+		ref NF_Bases_Respawn respawn = GetNFBasesManager().GetRespawn(faction);
 		if (respawn) {
 			pos = respawn.GetPosition();
 		}

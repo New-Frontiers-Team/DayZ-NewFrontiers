@@ -1,15 +1,18 @@
 class NF_Manager
 {
-    private ref array< ref NF_Player > m_Players = new ref array< ref NF_Player >;
+    private ref array<ref NF_Faction> m_Factions = new ref array<ref NF_Faction>;
+    private ref array<ref NF_Player> m_Players = new ref array<ref NF_Player>;
 
     void NF_Manager()
     {
+        Print("[NF] Starting...");
         Init();
     }
 
-    void Init()
+    private void Init()
     {
-        //GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLaterByName(instance, "SaveNewFrontiersPlayers", 300 * 1000, true);
+        NF_Config config = new NF_Config();
+        m_Factions = config.GetFactions();
     }
 
 	void OnPlayerConnect(string uid)
@@ -59,6 +62,16 @@ class NF_Manager
 		
 		return null;
 	}
+
+    NF_Faction GetFaction(int id)
+    {
+        for(int i = 0; i < m_Factions.Count(); i++) {//TODO change to foreach
+            ref NF_Faction faction = m_Factions.Get(i);
+            if(faction.GetId() == id) return faction;
+        }
+
+        return null;
+    }
 }
 
 ref NF_Manager m_NF_Manager;

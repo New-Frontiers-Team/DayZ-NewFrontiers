@@ -1,42 +1,33 @@
 class NF_PlayerData
 {
-    int team;
+    int faction;
 }
 
 class NF_Player : RestCallback
 {
-	static const string DIR_NEW_FRONTIERS = "$profile:NewFrontiers/";
-	static const string DIR_PLAYERS = DIR_NEW_FRONTIERS + "Players/";
-	
-    private string m_Id;
-    private int m_Team;
-
+	static const string DIR_PLAYERS = NF_DIR + "Players/";
     private string m_FilePath;
+
+    private string m_Id;
+    private NF_Faction m_Faction;
 
     void NF_Player(string uid)
     {
         m_Id = uid;
-        m_Team = 0;
-
         m_FilePath = DIR_PLAYERS + NF_String.FileReadyName(uid) + ".json";
 
         Init();
     }
 
     void Init()
-    {
-		if(!FileExist(DIR_NEW_FRONTIERS))
-			MakeDirectory(DIR_NEW_FRONTIERS);
-		
+    {		
         if(!FileExist(DIR_PLAYERS))
 			MakeDirectory(DIR_PLAYERS);
 
         if(FileExist(m_FilePath)) {
             LoadData();
         } else {
-            m_Team = NF_Team.GenerateTeam();
-
-            SaveData();
+            InitData();
         }
     }
 	
@@ -45,13 +36,19 @@ class NF_Player : RestCallback
         NF_PlayerData data = new NF_PlayerData();
 		JsonFileLoader<NF_PlayerData>.JsonLoadFile(m_FilePath, data);
 
-        m_Team = data.team;
+        m_Faction = GetNFManager().GetFaction(data.faction);
 	}
+
+    void InitData()
+    {
+        m_Faction = GetNFManager().GetFaction(0);
+        SaveData();
+    }
 
 	void SaveData()
 	{
         NF_PlayerData data = new NF_PlayerData();
-        data.team = m_Team;
+        data.faction = m_Faction.GetId();
 
 		JsonFileLoader<NF_PlayerData>.JsonSaveFile(m_FilePath, data);
 	}
@@ -60,9 +57,9 @@ class NF_Player : RestCallback
 	{
 		return m_Id;
 	}
-
-    int GetTeam()
+    
+    NF_Faction GetFaction()
     {
-        return m_Team;
+        return m_Faction;
     }
 }
