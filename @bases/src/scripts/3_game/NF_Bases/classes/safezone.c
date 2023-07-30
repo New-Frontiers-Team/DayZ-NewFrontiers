@@ -1,21 +1,40 @@
+class NF_Bases_SafezoneData
+{
+    string position;
+    int radius;
+}
+
 class NF_Bases_Safezone
 {
-    private int team;
-    private string position;
-    private int radius;
+    private int m_faction;
+    private vector m_position;
+	private int m_radius;
 
-    int GetTeam()
+    void NF_Bases_Safezone(NF_Bases_SafezoneData data, int faction)
     {
-        return team;
+        m_faction = faction;
+        m_position = data.position.ToVector();
+        m_radius = data.radius;
+    }
+
+    int GetFaction()
+    {
+        return m_faction;
     }
 
     vector GetPosition()
     {
-        return position.ToVector();
+        return m_position;
     }
 
     int GetRadius()
     {
-        return radius;
+        return m_radius;
+    }
+
+    bool IsInside(vector targetPosition)
+    {
+        float distance = NF_Vector.Distance2D(m_position, targetPosition);
+        return distance <= m_radius;
     }
 }
