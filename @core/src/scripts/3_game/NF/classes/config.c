@@ -18,9 +18,9 @@ class NF_Config
 
     private void Init()
     {
-		if(!FileExist(NF_DIR))
+		if (!FileExist(NF_DIR))
 			MakeDirectory(NF_DIR);
-		
+
         if (FileExist(CONFIG_FILE)) {
             Print("[NF] Loading config...");
             LoadConfig();
@@ -39,7 +39,7 @@ class NF_Config
     {
         array<ref NF_Faction> factions = new array<ref NF_Faction>;
 
-        foreach(ref NF_FactionData data: m_Data.factions) {
+        foreach (ref NF_FactionData data: m_Data.factions) {
             ref NF_Faction faction = new NF_Faction(data);
             factions.Insert(faction);
         }

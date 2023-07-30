@@ -23,10 +23,10 @@ class NF_Player : RestCallback
 
     void Init()
     {
-        if(!FileExist(DIR_PLAYERS))
+        if (!FileExist(DIR_PLAYERS))
 			MakeDirectory(DIR_PLAYERS);
 
-        if(FileExist(m_FilePath)) {
+        if (FileExist(m_FilePath)) {
             LoadData();
         } else {
             InitData();
@@ -72,7 +72,7 @@ class NF_Player : RestCallback
 	int GetReputation(int factionId)
 	{
 		int currentReputation;
-		if (m_Reputation.Find(factionId, currentReputation)){
+		if (m_Reputation.Find(factionId, currentReputation)) {
 			return currentReputation;
 		}
 

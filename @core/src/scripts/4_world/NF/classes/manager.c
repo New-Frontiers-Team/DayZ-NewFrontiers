@@ -32,8 +32,8 @@ class NF_Manager
 
     NF_Player GetPlayer(string uid)
     {
-        foreach(ref NF_Player nfPlayer: m_Players) {
-            if(nfPlayer.GetId() == uid) {
+        foreach (ref NF_Player nfPlayer: m_Players) {
+            if (nfPlayer.GetId() == uid) {
                 return nfPlayer;
             }
         }
@@ -51,7 +51,7 @@ class NF_Manager
 
 	private NF_Player UnloadPlayer(string uid)
 	{
-		foreach(int i, ref NF_Player nfPlayer: m_Players) {
+		foreach (int i, ref NF_Player nfPlayer: m_Players) {
             if (nfPlayer.GetId() == uid) {
                 m_Players.Remove(i);
 				return nfPlayer;
@@ -68,8 +68,8 @@ class NF_Manager
 
     NF_Faction GetFaction(int id)
     {
-        foreach(ref NF_Faction faction: m_Factions) {
-            if(faction.GetId() == id) return faction;
+        foreach (ref NF_Faction faction: m_Factions) {
+            if (faction.GetId() == id) return faction;
         }
 
         return null;

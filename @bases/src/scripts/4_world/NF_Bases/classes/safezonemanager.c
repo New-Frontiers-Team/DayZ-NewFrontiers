@@ -57,7 +57,7 @@ class NF_Bases_SafezoneManager
 		}
 
 		if (m_RestrictedAreaTick >= RESTRICTED_AREA_SEC) {
-			m_Player.SetHealth( "GlobalHealth", "Health", 0 );
+			m_Player.SetHealth("GlobalHealth", "Health", 0);
 		}
 
 		if (m_SafezoneExitTick >= SAFEZONE_EXIT_SEC) {
@@ -83,6 +83,6 @@ class NF_Bases_SafezoneManager
 
 	void UpdateGUI()
 	{
-		GetRPCManager().SendRPC("NF_Bases", "RPCUpdateSafezoneState", new Param3< bool, bool, int >( m_IsInSafezone, m_ShowAlert, m_AlertTime ), true, m_Player.GetIdentity());
+		GetRPCManager().SendRPC("NF_Bases", "RPCUpdateSafezoneState", new Param3< bool, bool, int >(m_IsInSafezone, m_ShowAlert, m_AlertTime), true, m_Player.GetIdentity());
 	}
 }

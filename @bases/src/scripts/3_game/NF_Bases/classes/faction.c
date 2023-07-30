@@ -11,11 +11,11 @@ modded class NF_Faction
 
     void NF_Faction(NF_FactionData data)
     {
-        foreach(ref NF_Bases_RespawnData respawn: data.respawns) {
+        foreach (ref NF_Bases_RespawnData respawn: data.respawns) {
             m_respawns.Insert(new NF_Bases_Respawn(respawn));
         }
 
-        foreach(ref NF_Bases_SafezoneData safezone: data.safezones) {
+        foreach (ref NF_Bases_SafezoneData safezone: data.safezones) {
             m_safezones.Insert(new NF_Bases_Safezone(safezone, m_Id));
         }
     }
@@ -32,7 +32,7 @@ modded class NF_Faction
 
     NF_Bases_Respawn GetRandomRespawn()
     {
-        if(m_respawns.Count() == 0) {
+        if (m_respawns.Count() == 0) {
             return null;
         }
 
