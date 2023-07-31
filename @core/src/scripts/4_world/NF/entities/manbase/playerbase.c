@@ -1,57 +1,57 @@
 modded class PlayerBase
 {
+	const float NF_COMBAT_MODE_SEC = 60;
+
 	protected ref NF_Player m_NF_Player;
-	protected int m_NF_Team;
+	protected int m_NF_FactionId;
 
 	protected bool m_NF_IsInCombatMode;
 	protected float m_NF_CombatModeTick;
-	
-	const float NF_COMBAT_MODE_SEC = 60;
 
 	override void Init()
 	{
-		m_NF_Team = 0;
-		RegisterNetSyncVariableInt("m_NF_Team", 0, 2);
-		
+		m_NF_FactionId = 0;
+		RegisterNetSyncVariableInt("m_NF_FactionId");
+
 		super.Init();
 	}
-	
+
 	override void OnPlayerLoaded()
 	{
 		super.OnPlayerLoaded();
 
-		if ( GetGame().IsServer() && GetIdentity() )
-		{
+		if (GetGame().IsServer() && GetIdentity()) {
 			m_NF_Player = GetNFManager().GetPlayer(GetIdentity().GetId());
-			SetNFTeam(m_NF_Player.GetTeam());
+			NF_SetFaction(m_NF_Player.GetFaction());
 		}
 	}
-	
-	int GetNFTeam()
+
+	ref NF_Player NF_GetPlayer()
 	{
-		return m_NF_Team;
+		return m_NF_Player;
 	}
-	
-	void SetNFTeam( int nf_team )
+
+	int NF_GetFaction()
 	{
-		m_NF_Team = nf_team;
-		Print("[NewFrontiers] Team changed to " + NF_Team.GetTeamName(m_NF_Team));
+		return m_NF_FactionId;
+	}
 
-		int slot_id = InventorySlots.GetSlotIdFromString("Armband");
-		EntityAI armband = GetInventory().FindAttachment(slot_id);
+	void NF_SetFaction(NF_Faction faction)
+	{
+		m_NF_FactionId = faction.GetId();
 
-		if (armband && (armband.GetType() == "Armband_Blue" || armband.GetType() == "Armband_Red")) {
-			GetInventory().LocalDestroyEntity(armband);
-		}
+		if (m_NF_FactionId) {
+			int slot_id = InventorySlots.GetSlotIdFromString("Armband");
+			EntityAI armband = GetInventory().FindAttachment(slot_id);
 
-		if (m_NF_Team) {
-			if (m_NF_Team == NF_Teams.Blufor) {
-				GetInventory().CreateAttachmentEx("Armband_Blue", slot_id);
-			} else if (m_NF_Team == NF_Teams.Opfor) {
-				GetInventory().CreateAttachmentEx("Armband_Red", slot_id);
+			if (armband) {
+				GetInventory().LocalDestroyEntity(armband);
 			}
 
-			GetInventory().SetSlotLock(slot_id, true);
+			if (faction.GetArmband()) {
+				GetInventory().CreateAttachmentEx(faction.GetArmband(), slot_id);
+				GetInventory().SetSlotLock(slot_id, true);
+			}
 		} else {
 			GetInventory().SetSlotLock(slot_id, false);
 		}
@@ -59,21 +59,23 @@ modded class PlayerBase
 		SetSynchDirty();
 	}
 
-	void NF_SetCombatMode() {
+	void NF_SetCombatMode()
+	{
 		m_NF_IsInCombatMode = true;
 		m_NF_CombatModeTick = 0;
 	}
 
-	bool NF_IsInCombatMode() {
+	bool NF_IsInCombatMode()
+	{
 		return m_NF_IsInCombatMode;
 	}
 
 	override void OnScheduledTick(float deltaTime)
 	{
 		super.OnScheduledTick(deltaTime);
-		
-		if( !IsPlayerSelected() || !IsAlive() ) return;
-		if( m_NF_IsInCombatMode ) m_NF_CombatModeTick += deltaTime;
+
+		if (!IsPlayerSelected() || !IsAlive()) return;
+		if (m_NF_IsInCombatMode) m_NF_CombatModeTick += deltaTime;
 
 		if (m_NF_CombatModeTick >= NF_COMBAT_MODE_SEC) {
 			m_NF_IsInCombatMode = false;

@@ -1,15 +1,18 @@
 class NF_Manager
 {
-    private ref array< ref NF_Player > m_Players = new ref array< ref NF_Player >;
+    private ref array<ref NF_Faction> m_Factions = new ref array<ref NF_Faction>;
+    private ref array<ref NF_Player> m_Players = new ref array<ref NF_Player>;
 
     void NF_Manager()
     {
+        Print("[NF] Starting...");
         Init();
     }
 
-    void Init()
+    private void Init()
     {
-        //GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLaterByName(instance, "SaveNewFrontiersPlayers", 300 * 1000, true);
+        NF_Config config = new NF_Config();
+        m_Factions = config.GetFactions();
     }
 
 	void OnPlayerConnect(string uid)
@@ -29,9 +32,8 @@ class NF_Manager
 
     NF_Player GetPlayer(string uid)
     {
-        for(int i = 0; i < m_Players.Count(); i++) {
-            ref NF_Player nfPlayer = m_Players.Get(i);
-            if(nfPlayer.GetId() == uid) {
+        foreach (ref NF_Player nfPlayer: m_Players) {
+            if (nfPlayer.GetId() == uid) {
                 return nfPlayer;
             }
         }
@@ -46,19 +48,32 @@ class NF_Manager
 
         return nfPlayer;
     }
-	
+
 	private NF_Player UnloadPlayer(string uid)
 	{
-		for(int i = 0; i < m_Players.Count(); i++) {
-            ref NF_Player nfPlayer = m_Players.Get(i);
+		foreach (int i, ref NF_Player nfPlayer: m_Players) {
             if (nfPlayer.GetId() == uid) {
                 m_Players.Remove(i);
 				return nfPlayer;
             }
         }
-		
+
 		return null;
 	}
+
+    array<ref NF_Faction> GetFactions()
+    {
+        return m_Factions;
+    }
+
+    NF_Faction GetFaction(int id)
+    {
+        foreach (ref NF_Faction faction: m_Factions) {
+            if (faction.GetId() == id) return faction;
+        }
+
+        return null;
+    }
 }
 
 ref NF_Manager m_NF_Manager;

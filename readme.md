@@ -28,33 +28,51 @@ Run the server.bat script to start the server on test mode and client.bat to sta
 To develop and debug run the workbench.bat script, it will open the Enfusion Workbench with the mods loaded and file patching enabled, so you can edit the mod and recompile it using ctrl + F7 during runtime.
 
 ## Server configuration
+The New Frontiers mod provide some level of configuration for servers, at the moment you can configure the factions, faction defined respawn points and faction exclusive safezones. All configuration files need to be placed inside the server profile folder in a folder named NewFrontiers.
 
-The Bases mod provide two types of configurations, team defined respawn points and team exclusive safezones, those two are stored inside the server profile folder on the path "NewFrontiers/Bases" as json files. Examples:
+Here are examples of all existing configurations:
 
-#### Respawns:
+#### config.json
 ```JSON
-[
-    {
-        "team": 1,
-        "position": "4645 0 10094"
-    }, {
-        "team": 2,
-        "position": "4357 0 10606"
-    }
-]
-```
-
-#### Safezones:
-```JSON
-[
-    {
-        "team": 1,
-        "position": "4645 0 10094",
-        "radius": 200
-    }, {
-        "team": 2,
-        "position": "4357 0 10606",
-        "radius": 200
-    }
-]
+{
+    "factions": [
+        {
+            "id": 0,
+            "name": "Independent",
+            "armband": ""
+        }, {
+            "id": 1,
+            "name": "Blufor",
+            "armband": "Armband_Blue",
+            "respawns": [
+                {
+                    "position": "4645 0 10094",
+                    "radius": 10
+                }
+            ],
+            "safezones": [
+                {
+                    "position": "4645 0 10094",
+                    "radius": 100
+                }
+            ]
+        }, {
+            "id": 2,
+            "name": "Opfor",
+            "armband": "Armband_Red",
+            "respawns": [
+                {
+                    "position": "4357 0 10606",
+                    "radius": 10
+                }
+            ],
+            "safezones": [
+                {
+                    "position": "4357 0 10606",
+                    "radius": 100
+                }
+            ]
+        }
+    ]
+}
 ```

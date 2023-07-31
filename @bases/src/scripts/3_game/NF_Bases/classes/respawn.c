@@ -1,15 +1,5 @@
-class NF_Bases_Respawn
+class NF_Bases_RespawnData
 {
-	private int team;
-    private string position;
-   
-	int GetTeam()
-    {
-        return team;
-    }
-
-    vector GetPosition()
-    {
-        return position.ToVector();
-    }
+    string position;
+    int radius;
 }

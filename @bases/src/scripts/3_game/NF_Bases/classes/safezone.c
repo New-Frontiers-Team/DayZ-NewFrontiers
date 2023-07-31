@@ -1,21 +1,6 @@
-class NF_Bases_Safezone
+class NF_Bases_SafezoneData
 {
-    private int team;
-    private string position;
-    private int radius;
-
-    int GetTeam()
-    {
-        return team;
-    }
-
-    vector GetPosition()
-    {
-        return position.ToVector();
-    }
-
-    int GetRadius()
-    {
-        return radius;
-    }
+    string position;
+    int radius;
+    int min_reputation;
 }
