@@ -1,9 +1,3 @@
-class NF_PlayerData
-{
-    int faction;
-    ref map<int, int> reputation;
-}
-
 class NF_Player : RestCallback
 {
 	static const string DIR_PLAYERS = NF_DIR + "Players/";

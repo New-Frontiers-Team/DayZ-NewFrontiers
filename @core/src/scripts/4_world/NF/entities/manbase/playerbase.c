@@ -26,6 +26,11 @@ modded class PlayerBase
 		}
 	}
 
+	ref NF_Player NF_GetPlayer()
+	{
+		return m_NF_Player;
+	}
+
 	int NF_GetFaction()
 	{
 		return m_NF_FactionId;
