@@ -13,9 +13,9 @@ Install the Community Framework mod from the DayZ Workshop on Steam.
 Run the setup.bat that is inside the scripts folder, it will create the symbolic links and run the first build.
 
 ## Running
-Download the latest DayZ Server from Steam and copy mpmissions folder and serverDZ.cfg file to your DayZ gane folder.
+Download the latest DayZ Server from Steam and copy mpmissions folder and ```serverDZ.cfg``` file to your DayZ gane folder.
 
-Change those options on your new serverDZ.cfg:
+Change those options on your new ```serverDZ.cfg```:
 ```C
 BattlEye = 0;			// turn off BE since diag exe does not run with it
 verifySignatures = 0;	// if testing mods which aren't properly signed yet
@@ -76,3 +76,8 @@ Here are examples of all existing configurations:
     ]
 }
 ```
+
+## Translations
+For the translation of the mod, a file called ```stringtable.csv``` is used, all mod texts must be in this file, and for GUI use, you must use a # before the name.
+
+Translation will not work with DayZ in debug mode with file patching.
