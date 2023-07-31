@@ -1,6 +1,9 @@
+:: Setup mod folders to development
+
+@echo off
 pushd "%~dp0"
 
-::Link mod folder to DayZ Source
+:: Link mod folder to DayZ Source
 mklink /J "P:\NewFrontiers" "..\@core\src"
 mklink /J "P:\NewFrontiersBases" "..\@bases\src"
 
