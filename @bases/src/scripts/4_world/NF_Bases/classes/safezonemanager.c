@@ -104,6 +104,6 @@ class NF_Bases_SafezoneManager
 
 	void UpdateGUI()
 	{
-		GetRPCManager().SendRPC("NF_Bases", "RPCUpdateSafezoneState", new Param3<bool, bool, int>(m_IsProtected, m_ShowAlert, m_AlertTime), true, m_Player.GetIdentity());
+		GetRPCManager().SendRPC("NF_Bases", "RPCUpdateSafezoneState", new Param4<bool, bool, int, bool>(m_IsProtected, m_ShowAlert, m_AlertTime, m_Player.NF_IsInCombatMode()), true, m_Player.GetIdentity());
 	}
 }
