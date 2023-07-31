@@ -15,12 +15,12 @@ modded class PlayerBase
 		super.Init();
 	}
 
-	int IsInSafezone()
+	int NF_IsInSafezone()
 	{
 		return m_NF_Bases_IsInSafezone;
 	}
 
-	void SetIsInSafezone(bool isInSafezone)
+	void NF_SetIsInSafezone(bool isInSafezone)
 	{
 		if (isInSafezone != m_NF_Bases_IsInSafezone) {
 			m_NF_Bases_IsInSafezone = isInSafezone;
@@ -30,7 +30,7 @@ modded class PlayerBase
 
 	override bool CanBeRestrained()
 	{
-		if (IsInSafezone()) {
+		if (NF_IsInSafezone()) {
 			return false;
 		}
 

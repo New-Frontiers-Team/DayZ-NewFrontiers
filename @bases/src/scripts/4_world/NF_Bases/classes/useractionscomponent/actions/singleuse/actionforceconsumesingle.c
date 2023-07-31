@@ -2,7 +2,7 @@ modded class ActionForceConsumeSingle
 {
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
-		if (player.IsInSafezone()) {
+		if (player.NF_IsInSafezone()) {
 			return false;
 		}
 

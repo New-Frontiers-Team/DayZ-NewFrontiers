@@ -3,7 +3,7 @@ modded class DayZPlayerMeleeFightLogic_LightHeavy
 	override bool HandleFightLogic(int pCurrentCommandID, HumanInputController pInputs, EntityAI pEntityInHands, HumanMovementState pMovementState, out bool pContinueAttack)
 	{
 		PlayerBase player = PlayerBase.Cast(m_DZPlayer);
-		if (player && player.IsInSafezone()) {
+		if (player && player.NF_IsInSafezone()) {
 			return false;
 		}
 

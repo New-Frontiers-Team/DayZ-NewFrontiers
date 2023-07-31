@@ -76,7 +76,7 @@ class NF_Bases_SafezoneManager
 		bool isInSafezone = !!safezone || isProtected;
 		if (isInSafezone != m_IsInSafezone) {
 			m_IsInSafezone = isInSafezone;
-			m_Player.SetIsInSafezone(isInSafezone);
+			m_Player.NF_SetIsInSafezone(isInSafezone);
 		}
 
 		if (isProtected != m_IsProtected) {

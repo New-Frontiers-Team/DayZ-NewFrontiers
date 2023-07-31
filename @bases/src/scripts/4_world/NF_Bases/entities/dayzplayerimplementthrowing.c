@@ -4,7 +4,7 @@ modded class DayZPlayerImplementThrowing
 	{
 		PlayerBase player = PlayerBase.Cast(m_Player);
 
-		if (player.IsInSafezone()) {
+		if (player.NF_IsInSafezone()) {
 			return;
 		}
 

@@ -2,7 +2,7 @@ modded class WeaponManager
 {
 	override bool CanFire(Weapon_Base wpn)
 	{
-		if (m_player.IsInSafezone()) {
+		if (m_player.NF_IsInSafezone()) {
 			return false;
 		}
 
