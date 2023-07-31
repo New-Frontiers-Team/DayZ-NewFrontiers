@@ -68,7 +68,7 @@ FrameWidgetClass rootFrame {
      hexactsize 0
      vexactsize 1
      style Bold
-     text "RESTRICTED AREA"
+     text "#nf_restricted_area"
      "text halign" center
      "text valign" center
     }
@@ -93,7 +93,7 @@ FrameWidgetClass rootFrame {
      vexactpos 1
      hexactsize 0
      vexactsize 1
-     text "You are entering a restricted area, go back now or you will die!"
+     text "#nf_safezone_alert"
      "text halign" center
      wrap 1
     }
