@@ -10,6 +10,7 @@ class NF_KillFeed : PluginBase
 
             if (weapon) {
                 killerWeapon = weapon.GetType();
+                int dst = vector.Distance(victim.GetPosition(), killer.GetPosition());
 
                 array<Man> players = new array<Man>();
 		        GetGame().GetWorld().GetPlayerList(players);
@@ -18,7 +19,7 @@ class NF_KillFeed : PluginBase
 		        {
 			        PlayerBase recipient = PlayerBase.Cast(player);
 			        if (recipient.IsAlive()) {
-                        GetRPCManager().SendRPC("NF_KillFeed", "RPCUpdateKillFeed", new Param3<string, string, string>(killerName, victimName, killerWeapon), true, recipient.GetIdentity());
+                        GetRPCManager().SendRPC("NF_KillFeed", "RPCUpdateKillFeed", new Param4<string, string, string, int>(killerName, victimName, killerWeapon, dst), true, recipient.GetIdentity());
                     }
 		        }
             }

@@ -19,9 +19,9 @@ class NF_KillFeedWrapper
         return m_WidgetRoot;
     }
 
-    void AddItem(Param3<string, string, string> data)
+    void AddItem(Param4<string, string, string, int> data)
     {
-        m_Items.Insert(new NF_KillFeedItem(this, data.param1, data.param2, data.param3));
+        m_Items.Insert(new NF_KillFeedItem(this, data.param1, data.param2, data.param3, data.param4));
     }
 
     void RemoveItem(NF_KillFeedItem item)

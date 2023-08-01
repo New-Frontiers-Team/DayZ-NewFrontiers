@@ -7,10 +7,11 @@ class NF_KillFeedItem
     private TextWidget m_KillerName;
     private TextWidget m_VictimName;
     private ItemPreviewWidget m_KillerWeapon
+    private TextWidget m_Distance;
 
     private EntityAI m_LocalWeapon;
 
-    void NF_KillFeedItem(NF_KillFeedWrapper par, string kName, string vName, string wType)
+    void NF_KillFeedItem(NF_KillFeedWrapper par, string kName, string vName, string wType, int dst)
     {
         m_Parent = par;
 
@@ -18,6 +19,7 @@ class NF_KillFeedItem
 
         m_KillerName.SetText(FormatNick(kName));
         m_VictimName.SetText(FormatNick(vName));
+        m_Distance.SetText(String(dst.ToString() + "m."));
 
         SetWeapon(wType);
     }
@@ -28,6 +30,8 @@ class NF_KillFeedItem
         m_KillerName = TextWidget.Cast(m_WidgetRoot.FindAnyWidget("MurderName"));
         m_VictimName = TextWidget.Cast(m_WidgetRoot.FindAnyWidget("TargetName"));
         m_KillerWeapon = ItemPreviewWidget.Cast(m_WidgetRoot.FindAnyWidget("MurderWeapon"));
+        m_Distance = TextWidget.Cast(m_WidgetRoot.FindAnyWidget("KillDst"));
+
 
         m_Background = m_WidgetRoot.FindAnyWidget("Background");
 

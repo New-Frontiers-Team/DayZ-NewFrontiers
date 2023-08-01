@@ -11,9 +11,9 @@ modded class MissionGameplay
 
 	void RPCUpdateKillFeed(CallType type, ref ParamsReadContext ctx, ref PlayerIdentity sender, ref Object target)
 	{
-		Param3<string, string, string> data;
+		Param4<string, string, string, int> data;
 		if (!ctx.Read(data)) return;
-		
+
 		m_KillFeed.AddItem(data);
 	}
 }
