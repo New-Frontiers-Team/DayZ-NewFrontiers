@@ -30,6 +30,8 @@ To develop and debug run the workbench.bat script, it will open the Enfusion Wor
 ## Server configuration
 The New Frontiers mod provide some level of configuration for servers, at the moment you can configure the factions, faction defined respawn points and faction exclusive safezones. All configuration files need to be placed inside the server profile folder in a folder named NewFrontiers.
 
+It is important to mention that the color code must be hexadecimal, following the example.
+
 Here are examples of all existing configurations:
 
 #### config.json
@@ -39,11 +41,13 @@ Here are examples of all existing configurations:
         {
             "id": 0,
             "name": "Independent",
-            "armband": ""
+            "armband": "",
+            "color": "0xff34eb6b"
         }, {
             "id": 1,
             "name": "Blufor",
             "armband": "Armband_Blue",
+            "color": "0xff343aeb",
             "respawns": [
                 {
                     "position": "4645 0 10094",
@@ -60,6 +64,7 @@ Here are examples of all existing configurations:
             "id": 2,
             "name": "Opfor",
             "armband": "Armband_Red",
+            "color": "0xffeb3434",
             "respawns": [
                 {
                     "position": "4357 0 10606",
