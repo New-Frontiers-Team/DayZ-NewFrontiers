@@ -3,10 +3,13 @@ class NF_KillFeed : PluginBase
     void OnPlayerKilled(PlayerBase victim = null, PlayerBase killer = null, EntityAI weapon = null)
     {
         string victimName, killerName, killerWeapon;
+        int victimFaction, killerFaction;
 
         if (victim.GetIdentity() && killer.GetIdentity()) {
             killerName = killer.GetIdentity().GetName();
+            killerFaction = killer.NF_GetFaction();
 			victimName = victim.GetIdentity().GetName();
+            victimFaction = victim.NF_GetFaction();
 
             if (weapon) {
                 killerWeapon = weapon.GetType();
@@ -19,7 +22,7 @@ class NF_KillFeed : PluginBase
 		        {
 			        PlayerBase recipient = PlayerBase.Cast(player);
 			        if (recipient.IsAlive()) {
-                        GetRPCManager().SendRPC("NF_KillFeed", "RPCUpdateKillFeed", new Param4<string, string, string, int>(killerName, victimName, killerWeapon, dst), true, recipient.GetIdentity());
+                        GetRPCManager().SendRPC("NF_KillFeed", "RPCUpdateKillFeed", new Param6<string, int, string, int, string, int>(killerName, killerFaction, victimName, victimFaction, killerWeapon, dst), true, recipient.GetIdentity());
                     }
 		        }
             }

@@ -5,20 +5,24 @@ class NF_KillFeedItem
     private Widget m_WidgetRoot;
     private Widget m_Background;
     private TextWidget m_KillerName;
+    private Widget m_KillerFaction;
     private TextWidget m_VictimName;
+    private Widget m_VictimFaction;
     private ItemPreviewWidget m_KillerWeapon
     private TextWidget m_Distance;
 
     private EntityAI m_LocalWeapon;
 
-    void NF_KillFeedItem(NF_KillFeedWrapper par, string kName, string vName, string wType, int dst)
+    void NF_KillFeedItem(NF_KillFeedWrapper par, string kName, int kFaction, string vName, int vFaction, string wType, int dst)
     {
         m_Parent = par;
 
         Init();
 
         m_KillerName.SetText(FormatNick(kName));
+        m_KillerFaction.SetColor(GetNFManager().GetFaction(kFaction).GetColor());
         m_VictimName.SetText(FormatNick(vName));
+        m_VictimFaction.SetColor(GetNFManager().GetFaction(vFaction).GetColor());
         m_Distance.SetText(String(dst.ToString() + "m."));
 
         SetWeapon(wType);
@@ -28,7 +32,9 @@ class NF_KillFeedItem
     {
         m_WidgetRoot = GetGame().GetWorkspace().CreateWidgets("NewFrontiersKillFeed/gui/layouts/murderinfo_gui.layout", m_Parent.GetRoot());
         m_KillerName = TextWidget.Cast(m_WidgetRoot.FindAnyWidget("MurderName"));
+        m_KillerFaction = m_WidgetRoot.FindAnyWidget("MurderFaction");
         m_VictimName = TextWidget.Cast(m_WidgetRoot.FindAnyWidget("TargetName"));
+        m_VictimFaction = m_WidgetRoot.FindAnyWidget("TargetFaction");
         m_KillerWeapon = ItemPreviewWidget.Cast(m_WidgetRoot.FindAnyWidget("MurderWeapon"));
         m_Distance = TextWidget.Cast(m_WidgetRoot.FindAnyWidget("KillDst"));
 

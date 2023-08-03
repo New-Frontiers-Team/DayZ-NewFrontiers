@@ -23,26 +23,38 @@ WrapSpacerWidgetClass MurderInfoWrap {
    hexactsize 1
    vexactsize 1
    style DayZDefaultPanel
-   Padding 0
+   Padding 5
    Margin 0
    "Size To Content H" 1
    "Size To Content V" 1
-   content_halign right
-   Columns 6
+   content_halign center
+   content_valign center
+   Columns 8
    Rows 1
    {
-    FrameWidgetClass padding1 {
+    PanelWidgetClass PaddingL {
      ignorepointer 1
-     position 10 10
-     size 15 30
+     position 0 0
+     size 10 22
      hexactpos 1
      vexactpos 1
      hexactsize 1
      vexactsize 1
     }
+    PanelWidgetClass MurderFaction {
+     ignorepointer 1
+     color 0.502 0 0 1
+     position 0 0
+     size 20 20
+     valign center_ref
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     style rover_sim_colorable
+    }
     TextWidgetClass MurderName {
      ignorepointer 1
-     color 0.2353 0.6235 0.3333 1
      size 0.966 34
      halign right_ref
      hexactpos 1
@@ -50,6 +62,7 @@ WrapSpacerWidgetClass MurderInfoWrap {
      hexactsize 0
      vexactsize 1
      userID 799
+     text "Frooszy"
      "exact text" 0
      text_proportion 0.8
      "size to text h" 1
@@ -68,8 +81,8 @@ WrapSpacerWidgetClass MurderInfoWrap {
      {
       ItemPreviewWidgetClass MurderWeapon {
        ignorepointer 1
-       position 10 6
-       size 100 27
+       position 0 0
+       size 100 30
        hexactpos 1
        vexactpos 1
        hexactsize 1
@@ -87,19 +100,20 @@ WrapSpacerWidgetClass MurderInfoWrap {
      hexactsize 1
      vexactsize 1
      userID 797
+     text "50m."
      text_proportion 0.6
      "text halign" center
      "text valign" center
     }
     TextWidgetClass TargetName {
      ignorepointer 1
-     color 0.6235 0.2353 0.2353 1
      size 446 34
      hexactpos 1
      vexactpos 1
      hexactsize 1
      vexactsize 1
      userID 796
+     text "Struntuz"
      "exact text" 0
      text_proportion 0.8
      "size to text h" 1
@@ -107,14 +121,27 @@ WrapSpacerWidgetClass MurderInfoWrap {
      "text halign" center
      "text valign" center
     }
-    FrameWidgetClass padding0 {
+    PanelWidgetClass TargetFaction {
      ignorepointer 1
-     position 10 10
-     size 15 1
+     color 0.502 0 0 1
+     size 20 20
+     halign right_ref
+     valign center_ref
      hexactpos 1
      vexactpos 1
      hexactsize 1
-     vexactsize 0
+     vexactsize 1
+     style rover_sim_colorable
+    }
+    PanelWidgetClass PaddingR {
+     ignorepointer 1
+     size 10 22
+     halign right_ref
+     valign center_ref
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
     }
    }
   }
