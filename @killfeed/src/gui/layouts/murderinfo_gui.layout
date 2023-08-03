@@ -29,13 +29,13 @@ WrapSpacerWidgetClass MurderInfoWrap {
    "Size To Content V" 1
    content_halign center
    content_valign center
-   Columns 8
+   Columns 10
    Rows 1
    {
     PanelWidgetClass PaddingL {
      ignorepointer 1
      position 0 0
-     size 10 22
+     size 8 22
      hexactpos 1
      vexactpos 1
      hexactsize 1
@@ -45,13 +45,22 @@ WrapSpacerWidgetClass MurderInfoWrap {
      ignorepointer 1
      color 0.502 0 0 1
      position 0 0
-     size 20 20
+     size 18 18
      valign center_ref
      hexactpos 1
      vexactpos 1
      hexactsize 1
      vexactsize 1
      style rover_sim_colorable
+    }
+    PanelWidgetClass PaddingL1 {
+     ignorepointer 1
+     position 0 0
+     size 3 22
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
     }
     TextWidgetClass MurderName {
      ignorepointer 1
@@ -81,8 +90,9 @@ WrapSpacerWidgetClass MurderInfoWrap {
      {
       ItemPreviewWidgetClass MurderWeapon {
        ignorepointer 1
-       position 0 0
-       size 100 30
+       size 100 27
+       halign center_ref
+       valign center_ref
        hexactpos 1
        vexactpos 1
        hexactsize 1
@@ -94,16 +104,37 @@ WrapSpacerWidgetClass MurderInfoWrap {
     TextWidgetClass KillDst {
      ignorepointer 1
      position 0 0
-     size 85 30
+     size 70 30
      hexactpos 0
      vexactpos 0
      hexactsize 1
      vexactsize 1
      userID 797
-     text "50m."
+     text "100m."
      text_proportion 0.6
      "text halign" center
      "text valign" center
+    }
+    PanelWidgetClass TargetFaction {
+     ignorepointer 1
+     color 0.502 0 0 1
+     size 18 18
+     halign right_ref
+     valign center_ref
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     style rover_sim_colorable
+    }
+    PanelWidgetClass PaddingR1 {
+     ignorepointer 1
+     position 0 0
+     size 3 22
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
     }
     TextWidgetClass TargetName {
      ignorepointer 1
@@ -121,21 +152,9 @@ WrapSpacerWidgetClass MurderInfoWrap {
      "text halign" center
      "text valign" center
     }
-    PanelWidgetClass TargetFaction {
-     ignorepointer 1
-     color 0.502 0 0 1
-     size 20 20
-     halign right_ref
-     valign center_ref
-     hexactpos 1
-     vexactpos 1
-     hexactsize 1
-     vexactsize 1
-     style rover_sim_colorable
-    }
     PanelWidgetClass PaddingR {
      ignorepointer 1
-     size 10 22
+     size 8 22
      halign right_ref
      valign center_ref
      hexactpos 1
