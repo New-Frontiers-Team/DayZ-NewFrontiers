@@ -43,8 +43,8 @@ class NF_KillFeedItem
 
         float width, heigth;
         width = GetFeedWidth();
-		m_Background.GetSize(null, heigth);
-		m_Background.SetSize(width, heigth);
+        m_Background.GetSize(null, heigth);
+        m_Background.SetSize(width, heigth);
 
         GetGame().GetCallQueue(CALL_CATEGORY_GUI).CallLater(this.Destroy, 10000, false);
     }
@@ -55,7 +55,7 @@ class NF_KillFeedItem
         if (result.Length() > 16) {
             result = result.Substring(0, 12) + "...";
         }
-		return result;
+        return result;
     }
 
     void SetWeapon(string type)
@@ -78,17 +78,17 @@ class NF_KillFeedItem
         if (m_LocalWeapon) {
             GetGame().ObjectDelete(m_LocalWeapon);
         }
-		return true;
+        return true;
     }
 
     float GetFeedWidth()
     {
-		float start, end, width;
-		m_KillerName.GetPos(null, start);
-		m_VictimName.GetPos(null, end);
-		m_VictimName.GetSize(width, null);
-		width = start + end + width;
+        float start, end, width;
+        m_KillerName.GetPos(null, start);
+        m_VictimName.GetPos(null, end);
+        m_VictimName.GetSize(width, null);
+        width = start + end + width;
 
-		return width;
+        return width;
     }
 }

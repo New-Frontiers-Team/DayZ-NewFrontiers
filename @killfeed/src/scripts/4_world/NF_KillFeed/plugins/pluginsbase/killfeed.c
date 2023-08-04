@@ -8,7 +8,7 @@ class NF_KillFeed : PluginBase
         if (victim.GetIdentity() && killer.GetIdentity()) {
             killerName = killer.GetIdentity().GetName();
             killerFaction = killer.NF_GetFaction();
-			victimName = victim.GetIdentity().GetName();
+            victimName = victim.GetIdentity().GetName();
             victimFaction = victim.NF_GetFaction();
 
             if (weapon) {
@@ -16,21 +16,21 @@ class NF_KillFeed : PluginBase
                 int dst = vector.Distance(victim.GetPosition(), killer.GetPosition());
 
                 array<Man> players = new array<Man>();
-		        GetGame().GetWorld().GetPlayerList(players);
+                GetGame().GetWorld().GetPlayerList(players);
 
-		        foreach (ref Man player: players)
-		        {
-			        PlayerBase recipient = PlayerBase.Cast(player);
-			        if (recipient.IsAlive()) {
+                foreach (ref Man player: players)
+                {
+                    PlayerBase recipient = PlayerBase.Cast(player);
+                    if (recipient.IsAlive()) {
                         GetRPCManager().SendRPC("NF_KillFeed", "RPCUpdateKillFeed", new Param6<string, int, string, int, string, int>(killerName, killerFaction, victimName, victimFaction, killerWeapon, dst), true, recipient.GetIdentity());
                     }
-		        }
+                }
             }
-		}
+        }
     }
 }
 
 NF_KillFeed NF_GetKillFeed()
 {
-	return NF_KillFeed.Cast(GetPlugin(NF_KillFeed));
+    return NF_KillFeed.Cast(GetPlugin(NF_KillFeed));
 }
