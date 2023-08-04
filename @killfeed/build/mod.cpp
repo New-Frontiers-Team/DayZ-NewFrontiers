@@ -1,0 +1,10 @@
+name = "New Frontiers Kill Feed";
+picture = "";
+logoSmall = "";
+logo = "";
+logoOver = "";
+tooltip = "";
+overview = "First Test";
+action = "https://dayz.com/";
+author = "Frooszy";
+version = "0.1";
