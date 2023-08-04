@@ -1,0 +1,10 @@
+name = "New Frontiers Missions";
+picture = "";
+logoSmall = "";
+logo = "";
+logoOver = "";
+tooltip = "";
+overview = "Add missions to the New Frontiers mod";
+action = "https://dayz.com/";
+author = "Struntuz";
+version = "0.1";
