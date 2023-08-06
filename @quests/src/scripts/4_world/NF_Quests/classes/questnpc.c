@@ -17,7 +17,7 @@ class NF_QuestNPC
         PlayerBase character = PlayerBase.Cast(GetGame().CreatePlayer(NULL, data.model, data.position.ToVector(), 0, "NONE"));
 		character.SetOrientation(data.rotation.ToVector());
         character.NF_SetFaction(m_Faction);
-        //character.NF_SetIsQuestNPC(true);
+        character.NF_SetIsQuestNPC(true);
 
         foreach (ref NF_QuestNPCItemData itemData: data.inventory) {
             EntityAI item;
