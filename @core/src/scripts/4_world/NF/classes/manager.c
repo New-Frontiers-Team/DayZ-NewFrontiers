@@ -1,16 +1,17 @@
 class NF_Manager
 {
-    private ref array<ref NF_Faction> m_Factions = new ref array<ref NF_Faction>;
-    private ref array<ref NF_Player> m_Players = new ref array<ref NF_Player>;
+    private ref array<ref NF_Faction> m_Factions;
+    private ref array<ref NF_Player> m_Players;
 
     void NF_Manager()
     {
-        Print("[NF] Starting...");
-        Init();
+        m_Factions = new ref array<ref NF_Faction>;
+        m_Players = new ref array<ref NF_Player>;
     }
 
-    private void Init()
+    void Init()
     {
+        Print("[NF] Starting...");
         NF_Config config = new NF_Config();
         m_Factions = config.GetFactions();
     }
