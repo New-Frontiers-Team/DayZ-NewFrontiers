@@ -23,6 +23,13 @@ class NF_ActionTalkTo: ActionInteractBase
 
     override void OnExecuteClient(ActionData action_data)
     {
-        Print("Talk to interaction started!");
+        PlayerBase ntarget = PlayerBase.Cast(action_data.m_Target.GetObject());
+        if (!ntarget) return;
+
+        int npcId = ntarget.NF_GetQuestNPCId();
+        if (!npcId) return;
+
+        MissionBaseWorld mission = MissionBaseWorld.Cast(GetGame().GetMission());
+        if (mission) mission.NF_ShowQuestsMenu(npcId);
     }
 }

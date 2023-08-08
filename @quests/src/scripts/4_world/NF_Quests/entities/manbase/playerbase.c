@@ -1,11 +1,11 @@
 modded class PlayerBase
 {
-    private bool m_NF_IsQuestNPC;
+    private int m_NF_QuestNPCId;
 
     override void Init()
     {
-        m_NF_IsQuestNPC = false;
-        RegisterNetSyncVariableBool("m_NF_IsQuestNPC");
+        m_NF_QuestNPCId = 0;
+        RegisterNetSyncVariableInt("m_NF_QuestNPCId");
 
         super.Init();
     }
@@ -19,12 +19,17 @@ modded class PlayerBase
 
     bool NF_IsQuestNPC()
     {
-        return m_NF_IsQuestNPC;
+        return !!m_NF_QuestNPCId;
     }
 
-    void NF_SetIsQuestNPC(bool isQuestNPC)
+    int NF_GetQuestNPCId()
     {
-        m_NF_IsQuestNPC = isQuestNPC;
-        SetAllowDamage(!isQuestNPC);
+        return m_NF_QuestNPCId;
+    }
+
+    void NF_SetQuestNPCId(int id)
+    {
+        m_NF_QuestNPCId = id;
+        SetAllowDamage(!id);
     }
 }

@@ -14,4 +14,13 @@ modded class NF_Manager
         NF_QuestManager questManager = new NF_QuestManager();
         m_QuestNPCs = questManager.GetNPCs();
     }
+
+    NF_QuestNPC GetQuestNPC(int id)
+    {
+        foreach (ref NF_QuestNPC npc: m_QuestNPCs) {
+            if (npc.GetId() == id) return npc;
+        }
+
+        return null;
+    }
 }
