@@ -3,12 +3,19 @@ class NF_QuestNPC
     private int m_Id;
     private string m_Name;
     private ref NF_Faction m_Faction;
+    private ref array<ref NF_Quest> m_Quests;
 
     void NF_QuestNPC(NF_QuestNPCData data)
     {
         m_Id = data.id;
         m_Name = data.name;
         m_Faction = GetNFManager().GetFaction(data.faction);
+
+        m_Quests = new array<ref NF_Quest>;
+        foreach (ref NF_QuestData quest: data.quests) {
+            m_Quests.Insert(new NF_Quest(quest));
+        }
+
         SpawnCharacter(data.character);
     }
 
@@ -41,5 +48,10 @@ class NF_QuestNPC
     string GetName()
     {
         return m_Name;
+    }
+
+    array<ref NF_Quest> GetQuests()
+    {
+        return m_Quests;
     }
 }

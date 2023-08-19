@@ -8,20 +8,17 @@ FrameWidgetClass rootFrame {
  hexactsize 0
  vexactsize 0
  {
-  WindowWidgetClass QuestsWindow {
+  WindowWidgetClass Window {
    ignorepointer 1
-   color 0 0 0 1
-   position 0 0
-   size 1200 900
+   size 1200 800
    halign center_ref
    valign center_ref
-   hexactpos 0
-   vexactpos 0
+   hexactpos 1
+   vexactpos 1
    hexactsize 1
    vexactsize 1
-   style rover_sim_black_2
    {
-    PanelWidgetClass Background {
+    WrapSpacerWidgetClass WindowContainer {
      ignorepointer 1
      size 1 1
      halign center_ref
@@ -30,57 +27,215 @@ FrameWidgetClass rootFrame {
      vexactpos 1
      hexactsize 0
      vexactsize 0
-    }
-    TextWidgetClass TitleText {
-     ignorepointer 1
-     keepsafezone 0
-     position 0 0
-     size 1 64
-     halign center_ref
-     hexactpos 1
-     vexactpos 1
-     hexactsize 0
-     vexactsize 1
-     scaled 1
-     style Bold
-     text "QUESTS"
-     "text halign" center
-     "text valign" center
-    }
-    PanelWidgetClass Separator {
-     ignorepointer 1
-     color 1 0 0 1
-     position 0 64
-     size 0.95 2
-     halign center_ref
-     hexactpos 1
-     vexactpos 1
-     hexactsize 0
-     vexactsize 1
-     style rover_sim_colorable
-    }
-    PanelWidgetClass ActionBar {
-     ignorepointer 1
-     size 1 76
-     halign center_ref
-     valign bottom_ref
-     hexactpos 1
-     vexactpos 1
-     hexactsize 0
-     vexactsize 1
+     Padding 0
+     Margin 0
+     content_halign center
      {
-      ButtonWidgetClass CancelButton {
-       color 0 0 0 1
-       position 15 0
-       size 256 48
-       valign center_ref
+      PanelWidgetClass HeaderBar {
+       ignorepointer 1
+       color 0.0392 0.0392 0.0392 1
+       size 1 60
+       halign center_ref
        hexactpos 1
        vexactpos 1
-       hexactsize 1
+       hexactsize 0
        vexactsize 1
-       style Default
-       text "CANCEL"
-       text_offset 0 0
+       style rover_sim_colorable
+       {
+        TextWidgetClass TitleText {
+         ignorepointer 1
+         position 20 0
+         size 650 45
+         valign center_ref
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         text "NPC Name"
+         font "gui/fonts/metron-bold"
+         "text valign" center
+        }
+       }
+      }
+      PanelWidgetClass Body {
+       inheritalpha 0
+       ignorepointer 1
+       color 0.0588 0.0588 0.0588 1
+       position 0 0
+       size 1 680
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
+       style rover_sim_colorable
+       {
+        PanelWidgetClass LeftPanel {
+         ignorepointer 1
+         color 0.1176 0.1176 0.1176 1
+         position 10 0
+         size 400 660
+         valign center_ref
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         style blank
+         {
+          WrapSpacerWidgetClass QuestList {
+           ignorepointer 1
+           position 0 0
+           size 1 1
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 0
+           style Empty
+           Padding 10
+           Margin 0
+           "Size To Content V" 1
+          }
+         }
+        }
+        PanelWidgetClass RightPanel {
+         ignorepointer 1
+         position 10 0
+         size 770 660
+         halign right_ref
+         valign center_ref
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         {
+          PanelWidgetClass QuestTitle {
+           inheritalpha 1
+           ignorepointer 1
+           color 0.0392 0.0392 0.0392 1
+           size 1 50
+           halign center_ref
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           style rover_sim_colorable
+           {
+            TextWidgetClass QuestTitleText {
+             ignorepointer 1
+             position 20 0
+             size 750 40
+             valign center_ref
+             hexactpos 1
+             vexactpos 1
+             hexactsize 1
+             vexactsize 1
+             style Normal
+             text "Quest Name"
+             font "gui/fonts/metron28"
+             text_proportion 0.95
+             "text valign" center
+            }
+           }
+          }
+          PanelWidgetClass QuestContent {
+           ignorepointer 1
+           color 0.1176 0.1176 0.1176 1
+           position 0 0
+           size 1 600
+           halign center_ref
+           valign bottom_ref
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 1
+           style rover_sim_colorable
+           {
+            ScrollWidgetClass QuestDescription {
+             disabled 0
+             clipchildren 1
+             ignorepointer 0
+             position 0 0
+             size 1 300
+             halign center_ref
+             hexactpos 1
+             vexactpos 1
+             hexactsize 0
+             vexactsize 1
+             "no focus" 1
+             "Scrollbar V" 1
+             {
+              MultilineTextWidgetClass QuestDescriptionText {
+               visible 1
+               disabled 0
+               clipchildren 1
+               inheritalpha 0
+               ignorepointer 1
+               ignoregloballv 0
+               keepsafezone 0
+               position 0 10
+               size 730 35
+               halign center_ref
+               hexactpos 1
+               vexactpos 1
+               hexactsize 1
+               vexactsize 1
+               scaled 1
+               draggable 0
+               style DayZNormal
+               text "Example quest description"
+               font "gui/fonts/metronlight22"
+               "exact text" 1
+               "size to text h" 0
+               "size to text v" 1
+               wrap 1
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      PanelWidgetClass ActionBar {
+       ignorepointer 1
+       color 0.0392 0.0392 0.0392 1
+       position 0 0
+       size 1 60
+       hexactpos 1
+       vexactpos 1
+       hexactsize 0
+       vexactsize 1
+       style rover_sim_colorable
+       {
+        PanelWidgetClass CancelButtonWrapper {
+         ignorepointer 1
+         color 0.0784 0.0784 0.0784 1
+         position 10 0
+         size 200 40
+         valign center_ref
+         hexactpos 1
+         vexactpos 1
+         hexactsize 1
+         vexactsize 1
+         style rover_sim_colorable
+         {
+          ButtonWidgetClass CancelButton {
+           color 0.1961 0.1961 0.1961 1
+           position 0 0
+           size 1 1
+           hexactpos 1
+           vexactpos 1
+           hexactsize 0
+           vexactsize 0
+           style Default
+           "no focus" 1
+           text "CANCEL"
+           text_offset 0 0
+           text_proportion 0.95
+          }
+         }
+        }
+       }
       }
      }
     }

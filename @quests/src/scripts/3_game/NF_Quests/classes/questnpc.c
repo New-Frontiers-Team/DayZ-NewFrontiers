@@ -4,6 +4,7 @@ class NF_QuestNPCData
     string name;
 	int faction;
     ref NF_QuestNPCCharacterData character;
+    array<ref NF_QuestData> quests;
 }
 
 class NF_QuestNPCCharacterData

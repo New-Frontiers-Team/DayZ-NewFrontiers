@@ -1,0 +1,43 @@
+PanelWidgetClass rootFrame {
+ ignorepointer 1
+ color 0.0392 0.0392 0.0392 1
+ position 0 0
+ size 400 50
+ hexactpos 1
+ vexactpos 1
+ hexactsize 1
+ vexactsize 1
+ style rover_sim_colorable
+ "no focus" 0
+ {
+  ButtonWidgetClass Button {
+   ignorepointer 0
+   color 0.1961 0.1961 0.1961 1
+   position 0 0
+   size 1 1
+   hexactpos 1
+   vexactpos 1
+   hexactsize 0
+   vexactsize 0
+   style Default
+   "no focus" 1
+   {
+    TextWidgetClass TitleText {
+     ignorepointer 1
+     position 15 0
+     size 300 40
+     valign center_ref
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     text "Quest name"
+     font "gui/fonts/metron22"
+     "exact text" 0
+     text_proportion 0.9
+     "text valign" center
+    }
+   }
+  }
+ }
+}
