@@ -2,7 +2,7 @@ modded class MissionServer extends MissionBase
 {
 	void MissionServer()
 	{
-		GetNFManager();
+		GetNFManager().Init();
 	}
 
 	override void InvokeOnConnect(PlayerBase player, PlayerIdentity identity)
