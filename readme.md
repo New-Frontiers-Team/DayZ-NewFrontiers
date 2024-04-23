@@ -13,7 +13,7 @@ Install the Community Framework mod from the DayZ Workshop on Steam.
 Run the setup.bat that is inside the scripts folder, it will create the symbolic links and run the first build.
 
 ## Running
-Download the latest DayZ Server from Steam and copy mpmissions folder and ```serverDZ.cfg``` file to your DayZ gane folder.
+Download the latest DayZ Server from Steam and copy mpmissions folder and ```serverDZ.cfg``` file to your DayZ game folder.
 
 Change those options on your new ```serverDZ.cfg```:
 ```C
