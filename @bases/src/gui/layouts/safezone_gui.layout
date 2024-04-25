@@ -1,5 +1,5 @@
 FrameWidgetClass rootFrame {
- position 0 0
+ position -0.82899 -0.8622
  size 1 1
  halign center_ref
  valign center_ref
@@ -32,8 +32,7 @@ FrameWidgetClass rootFrame {
      imageTexture "{8018278B0973BCB1}NewFrontiersBases/gui/textures/safezone.edds"
      mode blend
      "src alpha" 1
-     "no wrap" 0
-     stretch 1
+     "stretch mode" stretch_w_h
     }
    }
   }
@@ -113,6 +112,19 @@ FrameWidgetClass rootFrame {
      "text valign" center
     }
    }
+  }
+  TextWidgetClass LeaveCounter {
+   ignorepointer 1
+   position 0 96.2794
+   size 48 34
+   halign center_ref
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+   text "0"
+   "text halign" center
+   "text valign" center
   }
  }
 }

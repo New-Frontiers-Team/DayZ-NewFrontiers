@@ -8,6 +8,8 @@ class NF_Bases_SafezoneUI
 	private MultilineTextWidget m_ContentText;
 	private TextWidget m_CounterText;
 
+	private TextWidget m_LeaveCounter;
+
 	void NF_Bases_SafezoneUI()
 	{
 		Init();
@@ -27,6 +29,10 @@ class NF_Bases_SafezoneUI
 
 		m_CounterText = TextWidget.Cast(m_AlertWindow.FindAnyWidget("CounterText"));
 		m_CounterText.SetText("0");
+
+		m_LeaveCounter = TextWidget.Cast(m_WidgetRoot.FindAnyWidget("LeaveCounter"));
+		m_LeaveCounter.Show(false);
+		m_LeaveCounter.SetText("0");
 	}
 
 	void UpdateInSafezone(bool inSafezone)
@@ -48,5 +54,15 @@ class NF_Bases_SafezoneUI
 	void UpdateAlertTime(int seconds)
 	{
 		m_CounterText.SetText(seconds.ToString());
+	}
+
+	void UpdateLeaveTime(int seconds)
+	{
+		if (seconds != 0 && seconds != 15) {
+			m_LeaveCounter.Show(true);
+		} else {
+			m_LeaveCounter.Show(false);
+		}
+		m_LeaveCounter.SetText(seconds.ToString());
 	}
 }

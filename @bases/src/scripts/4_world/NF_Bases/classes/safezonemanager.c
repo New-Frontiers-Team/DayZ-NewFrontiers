@@ -15,6 +15,8 @@ class NF_Bases_SafezoneManager
 	private float m_RestrictedAreaTick;
 	private float m_SafezoneExitTick;
 
+	private int m_LeaveTime;
+
 	void NF_Bases_SafezoneManager(PlayerBase player)
 	{
 		m_Player = player;
@@ -91,6 +93,12 @@ class NF_Bases_SafezoneManager
 			UpdateGUI();
 		}
 
+		int leaveTime = (int)(SAFEZONE_EXIT_SEC - m_SafezoneExitTick);
+		if (leaveTime != m_LeaveTime) {
+			m_LeaveTime = leaveTime;
+			UpdateGUI();
+		}
+
 		m_Tick = 0;
 	}
 
@@ -104,6 +112,6 @@ class NF_Bases_SafezoneManager
 
 	void UpdateGUI()
 	{
-		GetRPCManager().SendRPC("NF_Bases", "RPCUpdateSafezoneState", new Param4<bool, bool, int, bool>(m_IsProtected, m_ShowAlert, m_AlertTime, m_Player.NF_IsInCombatMode()), true, m_Player.GetIdentity());
+		GetRPCManager().SendRPC("NF_Bases", "RPCUpdateSafezoneState", new Param5<bool, bool, int, bool, int>(m_IsProtected, m_ShowAlert, m_AlertTime, m_Player.NF_IsInCombatMode(), m_LeaveTime), true, m_Player.GetIdentity());
 	}
 }
