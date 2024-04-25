@@ -56,13 +56,14 @@ class NF_Bases_SafezoneUI
 		m_CounterText.SetText(seconds.ToString());
 	}
 
-	void UpdateLeaveTime(int seconds)
+	void UpdateLeaveTime(int seconds, bool inSafezone)
 	{
-		if (seconds != 0 && seconds != 15) {
+		if (seconds < 15 && inSafezone) {
 			m_LeaveCounter.Show(true);
 		} else {
 			m_LeaveCounter.Show(false);
 		}
+
 		m_LeaveCounter.SetText(seconds.ToString());
 	}
 }

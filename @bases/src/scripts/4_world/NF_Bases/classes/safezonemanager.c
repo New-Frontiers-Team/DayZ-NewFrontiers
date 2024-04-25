@@ -10,12 +10,11 @@ class NF_Bases_SafezoneManager
 	private bool m_IsProtected;
 	private bool m_ShowAlert;
 	private int m_AlertTime;
+	private int m_LeaveTime;
 
 	private float m_Tick;
 	private float m_RestrictedAreaTick;
 	private float m_SafezoneExitTick;
-
-	private int m_LeaveTime;
 
 	void NF_Bases_SafezoneManager(PlayerBase player)
 	{

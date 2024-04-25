@@ -77,6 +77,6 @@ modded class MissionGameplay
 	{
 		if (!m_NF_Bases_SafezoneUI) return;
 
-		m_NF_Bases_SafezoneUI.UpdateLeaveTime(m_NF_Bases_LeaveTime);
+		m_NF_Bases_SafezoneUI.UpdateLeaveTime(m_NF_Bases_LeaveTime, m_NF_Bases_InSafezone);
 	}
 }
