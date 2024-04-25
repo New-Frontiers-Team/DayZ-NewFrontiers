@@ -1,5 +1,5 @@
 FrameWidgetClass rootFrame {
- position -0.82899 -0.8622
+ position 0 0
  size 1 1
  halign center_ref
  valign center_ref
