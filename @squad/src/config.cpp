@@ -25,6 +25,7 @@ class CfgMods
 					"NewFrontiersSquad/scripts/4_world",
 				};
 			};
+
 			class missionScriptModule
 			{
 				value = "";

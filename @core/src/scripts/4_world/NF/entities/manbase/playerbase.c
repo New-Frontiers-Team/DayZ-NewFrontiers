@@ -21,7 +21,7 @@ modded class PlayerBase
 		super.OnPlayerLoaded();
 
 		if (GetGame().IsServer() && GetIdentity()) {
-			m_NF_Player = GetNFManager().GetPlayer(GetIdentity().GetId());
+			m_NF_Player = GetNFManager().GetPlayer(PlayerBase.Cast(this));
 			NF_SetFaction(m_NF_Player.GetFaction());
 		}
 	}
