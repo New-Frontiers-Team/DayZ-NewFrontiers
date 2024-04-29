@@ -15,35 +15,35 @@ class NF_Manager
         m_Factions = config.GetFactions();
     }
 
-	void OnPlayerConnect(string uid)
+	void OnPlayerConnect(ref PlayerBase playerBase)
 	{
-        ref NF_Player nfPlayer = GetPlayer(uid);
+        ref NF_Player nfPlayer = GetPlayer(playerBase);
         Print("[NF] Player connected " + nfPlayer.GetId());
 	}
 
-	void OnPlayerDisconnect(string uid)
+	void OnPlayerDisconnect(ref PlayerBase playerBase)
 	{
-        ref NF_Player nfPlayer = GetPlayer(uid);
+        ref NF_Player nfPlayer = GetPlayer(playerBase);
         nfPlayer.SaveData();
-        UnloadPlayer(uid);
+        UnloadPlayer(nfPlayer.GetId());
 
         Print("[NF] Player disconnected " + nfPlayer.GetId());
 	}
 
-    NF_Player GetPlayer(string uid)
+    NF_Player GetPlayer(ref PlayerBase playerBase)
     {
         foreach (ref NF_Player nfPlayer: m_Players) {
-            if (nfPlayer.GetId() == uid) {
+            if (nfPlayer.GetId() == playerBase.GetIdentity().GetId()) {
                 return nfPlayer;
             }
         }
 
-        return LoadPlayer(uid);
+        return LoadPlayer(playerBase);
     }
 
-    private NF_Player LoadPlayer(string uid)
+    private NF_Player LoadPlayer(ref PlayerBase playerBase)
     {
-        ref NF_Player nfPlayer = new NF_Player(uid);
+        ref NF_Player nfPlayer = new NF_Player(playerBase);
         m_Players.Insert(nfPlayer);
 
         return nfPlayer;

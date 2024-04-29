@@ -4,13 +4,15 @@ class NF_Player : RestCallback
     private string m_FilePath;
 
     private string m_Id;
+    private PlayerBase m_PlayerBase;
     private NF_Faction m_Faction;
     private ref map<int, int> m_Reputation;
 
-    void NF_Player(string uid)
+    void NF_Player(ref PlayerBase playerBase)
     {
-        m_Id = uid;
-        m_FilePath = DIR_PLAYERS + NF_String.FileReadyName(uid) + ".json";
+        m_Id = playerBase.GetIdentity().GetId();
+        m_PlayerBase = playerBase;
+        m_FilePath = DIR_PLAYERS + NF_String.FileReadyName(playerBase.GetIdentity().GetId()) + ".json";
 
         Init();
     }
@@ -57,6 +59,16 @@ class NF_Player : RestCallback
 	{
 		return m_Id;
 	}
+
+    ref PlayerBase GetPlayerBase()
+    {
+        return m_PlayerBase;
+    }
+
+    PlayerIdentity GetIdentity()
+    {
+        return m_PlayerBase.GetIdentity();
+    }
 
     NF_Faction GetFaction()
     {
